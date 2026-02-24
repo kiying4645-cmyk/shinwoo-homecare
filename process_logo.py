@@ -1,4 +1,3 @@
-import sys
 from rembg import remove
 from PIL import Image
 import io
@@ -6,6 +5,10 @@ import os
 
 def process_logo(input_path, output_path):
     print(f"Processing {input_path}...")
+    if not os.path.exists(input_path):
+        print(f"Error: {input_path} not found")
+        return
+
     with open(input_path, 'rb') as i:
         input_data = i.read()
     
@@ -20,14 +23,11 @@ def process_logo(input_path, output_path):
     
     # 저장
     img.save(output_path, "PNG")
-    print(f"Saved to {output_path}")
+    print(f"Successfully saved to {output_path}")
 
 if __name__ == "__main__":
-    current_dir = os.path.dirname(os.path.abspath(__file__))
-    input_file = os.path.join(current_dir, "assets", "raw_logo.png")
-    output_file = os.path.join(current_dir, "assets", "logo_transparent.png")
+    # 프로젝트 루트의 assets 폴더와 현재 작업 경로를 고려하여 경로 설정
+    input_file = "assets/logo.png"
+    output_file = "assets/logo_transparent.png"
     
-    if os.path.exists(input_file):
-        process_logo(input_file, output_file)
-    else:
-        print(f"Error: {input_file} not found")
+    process_logo(input_file, output_file)
