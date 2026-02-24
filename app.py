@@ -27,7 +27,7 @@ css_path = current_dir / "style.css"
 assets_dir = current_dir / "assets"
 hero_img_path = assets_dir / "hero_faucet.png"
 tools_img_path = assets_dir / "pro_tools.png"
-logo_path = assets_dir / "logo.png"
+logo_path = assets_dir / "logo_transparent.png"
 
 # CSS 적용
 if css_path.exists():
@@ -35,9 +35,16 @@ if css_path.exists():
 
 def main():
     # 상단 헤더
-    st.markdown("""
+    logo_html = ""
+    if logo_path.exists():
+        logo_base64 = get_base64_of_bin_file(str(logo_path))
+        logo_html = f'<img src="data:image/png;base64,{logo_base64}" style="height: 50px;">'
+    else:
+        logo_html = 'SHINWOO<span style="color:#2980B9">.</span>'
+
+    st.markdown(f"""
         <div class="premium-header">
-            <div class="header-logo">SHINWOO<span style="color:#2980B9">.</span></div>
+            <div class="header-logo">{logo_html}</div>
             <div style="display: flex; gap: 40px; font-weight: 500; font-size: 0.85rem; color: #666;">
                 <span>SERVICES</span>
                 <span>PROJECTS</span>
