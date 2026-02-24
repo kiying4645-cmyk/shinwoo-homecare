@@ -67,7 +67,7 @@ def main():
         """, unsafe_allow_html=True)
 
     # 서비스 섹션
-    st.markdown("<h2 class="section-title">Professional Services</h2>", unsafe_allow_html=True)
+    st.markdown('<h2 class="section-title">Professional Services</h2>', unsafe_allow_html=True)
     
     st.markdown("""
         <div class="service-container">
