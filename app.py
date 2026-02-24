@@ -21,26 +21,30 @@ def get_base64_of_bin_file(bin_file):
         data = f.read()
     return base64.b64encode(data).decode()
 
-# 경로 설정
-current_dir = Path(__file__).parent
-css_path = current_dir / "style.css"
-assets_dir = current_dir / "assets"
-hero_img_path = assets_dir / "hero_faucet.png"
-tools_img_path = assets_dir / "pro_tools.png"
-logo_path = assets_dir / "logo_transparent.png"
-
-# CSS 적용
-if css_path.exists():
-    local_css(css_path)
+def local_css(file_name):
+    if file_name.exists():
+        with open(file_name) as f:
+            st.markdown(f'<style>{f.read()}</style>', unsafe_allow_html=True)
 
 def main():
-    # 상단 헤더
+    # 경로 설정 및 자산 준비
+    current_dir = Path(__file__).parent
+    css_path = current_dir / "style.css"
+    assets_dir = current_dir / "assets"
+    hero_img_path = assets_dir / "hero_faucet.png"
+    tools_img_path = assets_dir / "pro_tools.png"
+    logo_path = assets_dir / "logo_transparent.png"
+
+    # CSS 적용 (최상단)
+    local_css(css_path)
+
+    # 상단 헤더 준비
     logo_html = ""
     if logo_path.exists():
         logo_base64 = get_base64_of_bin_file(str(logo_path))
-        logo_html = f'<img src="data:image/png;base64,{logo_base64}" style="height: 50px;">'
+        logo_html = f'<img src="data:image/png;base64,{logo_base64}" class="logo-img">'
     else:
-        logo_html = 'SHINWOO<span style="color:#2980B9">.</span>'
+        logo_html = '<span class="logo-text">SHINWOO<span style="color:#2980B9">.</span></span>'
 
     st.markdown(f"""
         <div class="premium-header">
