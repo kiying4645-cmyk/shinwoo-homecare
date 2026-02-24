@@ -44,12 +44,14 @@ def main():
 
     st.markdown(f"""
         <div class="premium-header">
-            <div class="header-logo">{logo_html}</div>
-            <div style="display: flex; gap: 40px; font-weight: 500; font-size: 0.85rem; color: #666;">
-                <span>SERVICES</span>
-                <span>PROJECTS</span>
-                <span>ABOUT</span>
-                <span style="color: #1A2B3C; font-weight: 700;">010-9319-7887</span>
+            <div class="header-content">
+                <div class="header-logo">{logo_html}</div>
+                <div class="header-nav">
+                    <span>SERVICES</span>
+                    <span>PROJECTS</span>
+                    <span>ABOUT</span>
+                    <span class="phone-num">010-9319-7887</span>
+                </div>
             </div>
         </div>
     """, unsafe_allow_html=True)
@@ -61,14 +63,14 @@ def main():
             <div class="hero-wrapper">
                 <img src="data:image/png;base64,{hero_base64}" class="hero-img" alt="Luxury Faucet">
                 <div class="hero-overlay"></div>
-                <div class="hero-content">
-                    <span style="color: #2980B9; font-weight: 700; letter-spacing: 2px;">PREMIUM HOME CARE</span>
+                <div class="hero-content-main">
+                    <span class="hero-tag">PREMIUM HOME CARE</span>
                     <h1 class="hero-title">주방의 품격을 완성하는<br>섬세한 전문가의 손길.</h1>
                     <p class="hero-desc">
                         신우홈케어는 최상급 수전 설치와 싱크대 수리 분야의 압도적인 기술력을 바탕으로, 
                         고객님의 공간을 단순한 기능 이상의 예술로 완성합니다.
                     </p>
-                    <a href="tel:010-9319-7887" class="btn-cta" style="background:#1A2B3C; color:white; padding: 20px 45px; border-radius:4px; text-decoration:none; font-weight:600; display:inline-block;">견적 상담 신청</a>
+                    <a href="tel:010-9319-7887" class="hero-btn">견적 상담 신청</a>
                 </div>
             </div>
         """, unsafe_allow_html=True)
